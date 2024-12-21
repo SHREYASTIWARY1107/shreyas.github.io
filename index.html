@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreyas Tiwary - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --accent-color: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        nav {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            margin-left: 2rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(29, 78, 216, 0.1));
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .experience-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .experience-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .experience-points {
+            list-style: none;
+        }
+
+        .experience-points li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .experience-points li::before {
+            content: "▹";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .tech-stack {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .skill-icon:hover {
+            transform: translateY(-2px);
+        }
+
+        .skill-icon i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .skills-marquee {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+            background: rgba(59, 130, 246, 0.1);
+            margin-top: 70px;
+        }
+
+        .skills-marquee-content {
+            display: flex;
+            animation: marquee 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        .skill-placard {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 20px;
+            margin: 0 15px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--text-primary);
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-placard i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+
+            .skill-list {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+        }
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --accent-color: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --card-bg: #1a1a1a;
+            --gradient-1: linear-gradient(45deg, #3b82f6, #2563eb);
+            --gradient-2: linear-gradient(45deg, #4f46e5, #3b82f6);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(29, 78, 216, 0.15));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .nav-container {
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-btn {
+            background: var(--gradient-1);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--gradient-2);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .experience-card, .project-card, .skill-category {
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover, .project-card:hover, .skill-category:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px) scale(1.01);
+        }
+
+        .company-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .company-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: var(--accent-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .company-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Additional enhanced UI elements */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-indicator.visible {
+            opacity: 1;
+        }
+
+        .scroll-indicator i {
+            color: white;
+        }
+
+        /* Enhanced animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Responsive enhancements */
+        @media (max-width: 768px) {
+            .skills-marquee {
+                height: 50px;
+            }
+
+            .skill-placard {
+                padding: 6px 15px;
+                font-size: 0.9rem;
+            }
+        }
+   
+    </style>
+    
+</head>
+<body>
+   
+
+    <!-- Moving Skills Placards -->
+    <div class="skills-marquee">
+        <div class="skills-marquee-content">
+            <div class="skill-placard"><i class="fab fa-python"></i>Python</div>
+            <div class="skill-placard"><i class="fab fa-react"></i>React</div>
+            <div class="skill-placard"><i class="fab fa-node-js"></i>Node.js</div>
+            <div class="skill-placard"><i class="fab fa-aws"></i>AWS</div>
+            <div class="skill-placard"><i class="fab fa-docker"></i>Docker</div>
+            <div class="skill-placard"><i class="fab fa-flutter"></i>Flutter</div>
+            <div class="skill-placard"><i class="fas fa-database"></i>PostgreSQL</div>
+            <div class="skill-placard"><i class="fab fa-git-alt"></i>Git</div>
+            <div class="skill-placard"><i class="fas fa-fire"></i>Firebase</div>
+            <div class="skill-placard"><i class="fab fa-golang"></i>Golang</div>
+        </div>
+    </div>
+
+    <section class="hero" id="about">
+        <div class="hero-content animate-fadeInUp">
+            <h1>Shreyas Tiwary</h1>
+            <p>Software Engineer & CFO at <a href="https://tranquilai.in/" target="_blank" class="company-link">Tranquil AI</a></p>
+            <a href="mailto:shreyastiwary@gmail.com" class="contact-btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-container">
+            <h2 class="animate-fadeInUp">Experience</h2>
+            <div class="experience-card animate-fadeInUp">
+                <h3>CFO & Co-Founder - <a href="https://tranquilai.in/" target="_blank" class="company-link">Tranquil AI</a></h3>
+                <div class="experience-period">
+                    <i class="fas fa-calendar-alt"></i>
+                    April 2024 – Present | Remote
+                </div>
+                <ul class="experience-points">
+                    <li>Led end-to-end development of Tranquil AI, a mindfulness app featuring AI therapy</li>
+                    <li>Architected backend infrastructure using Python, Flask, Firebase, Azure, and Docker</li>
+                    <li>Directed cross-functional team of developers, designers, and AI specialists</li>
+                    <li>Spearheaded product strategy and technical decision-making</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <h3>Software Engineering Intern - Pravaratan Technologies</h3>
+                <div class="experience-period">
+                    <i class="fas fa-calendar-alt"></i>
+                    October 2023 – December 2023 | Remote
+                </div>
+                <ul class="experience-points">
+                    <li>Developed multiple end-to-end fintech applications using Flutter</li>
+                    <li>Implemented real-time features using WebSockets, Firebase, and PostgreSQL</li>
+                    <li>Designed backend services with Python and Flask</li>
+                    <li>Collaborated with cross-functional teams for financial features integration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Bill Buddy</h3>
+                    <div class="tech-stack">Python, Flask, Flutter, Firebase</div>
+                    <ul class="experience-points">
+                        <li>Developed a real-time bill splitting application using Flutter</li>
+                        <li>Implemented real-time updates with Firebase</li>
+                        <li>Designed backend services with NoSQL</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3>FISC</h3>
+                    <div class="tech-stack">Flutter, Python, PostgreSQL</div>
+                    <ul class="experience-points">
+                        <li>Developed an investment application for blue-collar workers</li>
+                        <li>Utilized PostgreSQL for robust data management</li>
+                        <li>Implemented WebSockets for real-time updates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-container">
+            <h2>Skills & Technologies</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            Python
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            C/C++
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-golang"></i>
+                            </div>
+                            Golang
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            HTML/CSS
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Technologies</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-flutter"></i>
+                            </div>
+                            Flutter
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            Node.js
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            React
+                      
+                            <div class="skill-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            Flask
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            AWS
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            GCP
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            Azure
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            Docker
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Other</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            Git
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            PostgreSQL
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            Firebase
+                        </li>
+                        <li class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            CLI
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="section-container">
+            <h2>Certifications</h2>
+            <div class="skills-container">
+                <div class="experience-card">
+                    <ul class="experience-points">
+                        <li>MERN Full Stack Internship Program - ETHNUS</li>
+                        <li>AWS Academy Graduate - AWS Academy Cloud Foundations</li>
+                        <li>Career Essentials in Generative AI by Microsoft and LinkedIn</li>
+                        <li>AWS Certified Cloud Practitioner</li>
+                    </ul>
+                    <div class="experience-period" style="margin-top: 1rem;">
+                        <a href="https://www.linkedin.com/in/shreyastiwary/details/certifications/" 
+                           target="_blank" 
+                           class="contact-btn" 
+                           style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+                            View All Certifications
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/SHREYASTIWARY1107" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="https://linkedin.com/in/shreyastiwary" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="mailto:shreyastiwary@gmail.com" aria-label="Email">
+                <i class="fas fa-envelope fa-2x"></i>
+            </a>
+        </div>
+        <p class="mt-4 text-gray-400">© 2024 Shreyas Tiwary. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add fade-in animation for cards when they come into view
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience-card, .project-card, .skill-category').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
