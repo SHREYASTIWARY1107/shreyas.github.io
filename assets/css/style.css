@@ -23,12 +23,13 @@ body {
 body::before {
   content: "";
   position: fixed;
-  background: #010e1b;
+  background: linear-gradient(135deg, #010e1b 0%, #0a1a2e 50%, #010e1b 100%);
   background-size: cover;
   left: 0;
   right: 0;
   top: 0;
   height: 100vh;
+  z-index: -2;
 }
 
 @media (min-width: 1024px) {
@@ -74,6 +75,8 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   font-weight: 700;
   font-family: "Poppins", sans-serif;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1s ease;
 }
 
 #header h1 a, #header h1 a:hover {
@@ -86,6 +89,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
   margin-top: 20px;
   color: #12d640;
+  animation: fadeInUp 1s ease 0.2s both;
 }
 
 #header h2 span {
@@ -102,6 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 #header .social-links {
   margin-top: 40px;
   display: flex;
+  animation: fadeInUp 1s ease 0.4s both;
 }
 
 #header .social-links a {
@@ -281,7 +286,11 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   top: 0;
   right: 0;
-  background: #09203a;
+  background: rgba(9, 32, 58, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
 #header.header-top .social-links, #header.header-top h2 {
@@ -355,6 +364,7 @@ section .container {
   text-transform: uppercase;
   color: #dee2e6;
   font-family: "Poppins", sans-serif;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .section-title h2::after {
@@ -374,6 +384,11 @@ section .container {
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
   color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #fff 0%, #12d640 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /*--------------------------------------------------------------
@@ -487,8 +502,13 @@ section .container {
   display: flex;
   align-items: center;
   padding: 20px;
-  background: #09203a;
-  transition: ease-in-out 0.3s;
+  background: rgba(9, 32, 58, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -508,7 +528,10 @@ section .container {
 }
 
 .interests .icon-box:hover {
-  background: #042b56eb;
+  background: rgba(4, 43, 86, 0.9);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(18, 214, 64, 0.2);
+  border-color: rgba(18, 214, 64, 0.3);
 }
 
 /*--------------------------------------------------------------
@@ -660,10 +683,15 @@ section .container {
 --------------------------------------------------------------*/
 .services .icon-box {
   text-align: center;
-  background: #09203a;
+  background: rgba(9, 32, 58, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
   padding: 40px 40px;
   transition: all ease-in-out 0.3s;
-  margin: 10px
+  margin: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .services .icon-box .icon {
@@ -715,8 +743,10 @@ section .container {
 }
 
 .services .icon-box:hover {
-  background: #042e5f;
-  border-color: #1c7d32;
+  background: rgba(4, 46, 95, 0.9);
+  border-color: rgba(18, 214, 64, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(18, 214, 64, 0.2);
 }
 
 .services .icon-box:hover .icon {
@@ -899,7 +929,13 @@ section .container {
   color: #444444;
   padding: 20px;
   width: 100%;
-  background: #09203a;
+  background: rgba(9, 32, 58, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .contact .info-box i.bx {
@@ -908,7 +944,19 @@ section .container {
   border-radius: 50%;
   padding: 14px;
   float: left;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(18, 214, 64, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contact .info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(18, 214, 64, 0.2);
+  border-color: rgba(18, 214, 64, 0.3);
+}
+
+.contact .info-box:hover i.bx {
+  background: rgba(18, 214, 64, 0.2);
+  transform: scale(1.1);
 }
 
 .contact .info-box h3 {
@@ -1070,6 +1118,28 @@ section .container {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
